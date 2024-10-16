@@ -41,6 +41,18 @@ def draw_more():
     print(f"Your cards: {drawn_cards["user"]["cards"]}, current score: {drawn_cards["user"]["user_total"]}")
     print(f"Computer's first card: {drawn_cards["cpu"]["cards"][0]}") 
 
+def result():
+    if drawn_cards["user"]["user_total"] > drawn_cards["cpu"]["cpu_total"] and not drawn_cards["user"]["user_total"] > 21:
+        print("You Win!")
+    elif drawn_cards["user"]["user_total"] < drawn_cards["cpu"]["cpu_total"] and not drawn_cards["cpu"]["cpu_total"] > 21:
+        print("You Lose!")
+    elif (drawn_cards["user"]["user_total"] > 21 and drawn_cards["cpu"]["cpu_total"] > 21) or drawn_cards["user"]["user_total"] == drawn_cards["cpu"]["cpu_total"]:
+        print("DRAW!")        
+    elif drawn_cards["user"]["user_total"] > 21:
+        print("You went over. You LOSE!")
+    elif drawn_cards["cpu"]["cpu_total"]:
+        print("CPU over. You WIN!")
+
 def start():
     initial_draw()
 
@@ -56,15 +68,6 @@ def start():
     print(f"Your cards: {drawn_cards["user"]["cards"]}, current score: {drawn_cards["user"]["user_total"]}")
     print(f"CPU final cards: {drawn_cards["cpu"]["cards"]}, current score: {drawn_cards["cpu"]["cpu_total"]}")
 
-    if drawn_cards["user"]["user_total"] > drawn_cards["cpu"]["cpu_total"] and not drawn_cards["user"]["user_total"] > 21:
-        print("You Win!")
-    elif drawn_cards["user"]["user_total"] < drawn_cards["cpu"]["cpu_total"] and not drawn_cards["cpu"]["cpu_total"] > 21:
-        print("You Lose!")
-    elif drawn_cards["user"]["user_total"] > 21 and drawn_cards["cpu"]["cpu_total"] > 21:
-        print("DRAW!")
-    elif drawn_cards["user"]["user_total"] > 21:
-        print("You went over. You LOSE!")
-    elif drawn_cards["cpu"]["cpu_total"]:
-        print("CPU over. You WIN!")
+    result()
 
 start()
